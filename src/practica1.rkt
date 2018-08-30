@@ -7,24 +7,36 @@
 ;; decir, debe regresar a^b + b^a.
 ;; pot-sum: number number -> number
 (define (pot-sum a b)
-    #| Aquí va su código. |#)
+  (+ (expt a b) (expt b a)))
 
 ;; Función que calcula el área de un triángulo dados sus lados, usando la fórmula de Herón.
 ;; area-heron: number number number -> number
 (define (area-heron a b c)
-    #| Aquí va su código. |#)
-
+(let ([s (/ (+ a (+ b c)) 2)])
+  (sqrt (* s (* (* (- s a) (- s b)) (- s c))))))
+  
 ;; Función que dado un día de la semana representado mediante los 0 = do, 1 = lu, 2 = ma, ... sá = 6,
 ;; y un valor booleano y un valor booleano indicando si son vacaciones, regresa un símbolo que indica
 ;; a qué hora sonará una alarma.
 ;; alarma: number boolean -> symbol
 (define (alarma dia vacaciones)
-    #| Aquí va su código. |#)
+    (if (equal? vacaciones #t)
+      (if (or (= dia 0) (= dia 6))
+          'apagada
+          '10:00)
+      (if (or (= dia 0) (= dia 6))
+          '10:00
+          '7:00)))
 
 ;; Predicado que dados dos números enteros, determina si el segundo es divisor propio del primero.
 ;; divisor-propio?: number number -> boolean
 (define (divisor-propio? n m)
-    #| Aquí va su código. |#)
+   (define (divisor-propio? n m)
+   (cond
+     [(= n m) #f]
+     [(or (= n 0) (= m 0)) #f]
+     [(= 0 (remainder n m)) #t]
+     [else #f])))
 
 ;; Predicado que dado un número natural, determina si es un número perfecto.
 ;; es-perfecto?: number -> boolean
