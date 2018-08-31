@@ -41,10 +41,23 @@
 ;; Predicado que dado un número natural, determina si es un número perfecto.
 ;; es-perfecto?: number -> boolean
 (define (es-perfecto? n)
-    #| Aquí va su código. |#)
+    (cond
+     [(equal? #f (natural? n)) #f]
+     [(or (equal? 0 n) (equal? 1 n)) #f]
+     [(equal? (sum n) n) #t]
+     [else #f]))
+(define (sum n)
+  (apply + (filter
+              (lambda (x) (equal? 0 (remainder n x)))
+              (range 1 n))))
+
 
 (define (son-amigos? a b)
-    #| Aquí va su código. |#)
+    (cond
+    [(or (equal? #f (natural? a)) (equal? #f (natural? b))) #f]
+    [(or (or (equal? 0 a) (equal? 1 a)) (or (equal? 0 b) (equal? 1 b))) #f]
+    [(and (equal? (sum a) b) (equal? (sum b) a)) #t]
+    [else #f]))
 
 ;; Predicado que dado un número natural, determina si un número es feliz.
 ;; es-feliz?: number -> boolean
